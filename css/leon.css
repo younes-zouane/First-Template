@@ -1,0 +1,518 @@
+/* Start Variables */
+:root {   /* putting var that we need a lot in our work in a function so we use it easly */
+    --main: #10cab7;
+    --secondary: #2c4755;
+    --section-padding: 60px;
+    --section-background:#F6F6F6;
+}
+/*End Variables */
+
+/* Start Global Rules */
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth; /* because without that, when for exp we pressed in services link in heading, it's gonna scroll so fast */ 
+}
+body{
+    font-family: 'Work Sans', sans-serif;
+}
+.container{
+    padding-left:15px ;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Those Media for diffenrent sizes as mobile, tablet.. */
+/* small */
+@media (min-width: 768px) {
+    .container {
+        width: 750;
+    }
+}
+/* medium */
+@media (min-width: 992px){
+    .container {
+        width: 970px;
+    }
+}
+/* large */
+@media (min-width: 1200px){
+    .container {
+        width:1170px;
+    }
+}
+/* End Global Rules */
+
+/* Start Components : means ingredients */ /* --> This for all Heading in (Services, Portfolio, About & Contact) */
+.special-heading { 
+    color: #31302eda;
+    font-size: 100px;
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin: 0;
+
+}
+.special-heading + p {
+    margin: 0 0 10px;
+    font-size: 20px;
+    text-align: center;
+    color: #797979;
+}
+@media (max-width:767px) {   /* we do that so the size of context doesn't blow outside when we have a small screen */
+    .special-heading {
+        font-size: 60px;
+    }
+    .special-heading + p {
+         font-size: 15px;
+    }
+}
+
+/* End Components */
+
+/* Start Header */
+.header {
+    padding: 20px;
+}
+.header .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header .logo{
+    width: 60px;
+}
+.header p {
+    margin: -4px;
+    padding: 0;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    font-family: Comic Sans MS;
+}
+.header p::first-letter {
+    color: red;
+    font-size: 40px;
+}
+.header span {
+    display: inline-block;
+    color: red;
+    font-size: 40px;
+}
+.header .links{
+    position: relative;
+}
+.header .links:hover .icon span:nth-child(1){
+    width: 100%;
+}
+.header .links:hover .icon span:nth-child(2){
+    width: 100%;
+}
+
+.header .links .icon{
+    width: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+.header .links .icon span{
+    background-color: #333;
+    margin: 5px;
+    height: 2px;
+
+}
+.header .links .icon span:first-child{
+    width: 25%;
+}
+.header .links .icon span:nth-child(2){
+    width: 50%;
+    transition: 0.3s;
+}
+.header .links .icon span:last-child{
+    width: 100%;
+}
+.header .links ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: var(--section-background);
+    position: absolute;
+    right: 0;                     /* To Put It Without Space or Scroll From The Right */ 
+    min-width: 200px;
+    top: calc(100% +15px);        /* To set a space by 15 px from the original size(100%) */
+    display: none; 
+    z-index:1 ;              /* This To Make it Hide */
+}
+/*.header .links ul::before{    [!! No need for that, we just designed from it a square made by 4 triangles: <^> and the below triangle is white !!]
+    content: "";
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #DDD transparent;
+    position: absolute;
+    right: 5px;
+    top: -20px;
+}*/
+.header .links:hover ul {  /* we did that so when we hover on the links it's popped on the screen ,because we had in (.hea.links ul) display none */
+    display: block;
+}
+.links ul li::first-letter {
+    color: red;
+}
+.header .links ul li a{
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: #333;
+    transition: 0.3s;
+}
+.header .links ul li a:hover{
+    padding-left: 25px;
+}
+.header .links ul li:not(:last-child) a {  /* li:not(:last-child) mean do that in every child in li except the last child */
+    border-bottom: 1px solid #333; 
+}
+/* End Header */
+
+/* Start Landing Section */
+.landing {
+    background-image: url(../images/ok.jpg);
+    background-size: cover;
+    height: calc(100vh - 64px); /* vh mean height viewport , and we decrease 64px because header had 64px in height */
+    position: relative; /* we do that so when we had a child we gonna give him an absolute to stay related to this div */
+}
+.landing .intro-text {
+    position: absolute; /*if we didn't do that, the text gonna stay in the mid of the all the screen , so we put absolute that make him related to the landing */
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    width: 320px;  /* here we put width so if the screen are small the text will not stretching */
+    max-width: 100%; /* this is for not going outside any container */
+}
+.landing .intro-text h1 {
+    margin: 0;
+    font-weight: bold;
+    font-size: 50px;
+    color: var(--main);
+
+}
+.landing .intro-text p {
+    font-size: 19px;
+    line-height: 1.8;
+    color: rgb(75, 177, 207);
+}
+/* End Landing Section */
+
+/* Start Features */
+.features {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+    background-color: var(--section-background);
+}
+.features .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* auto-fill for fill the columns depending on the available space & minmax(300px, 1fr) so he start with 300px but if there is more space he gonna take one fraction(part) */ 
+    grid-gap: 20px;
+}
+.features .feat {
+    padding: 20px;
+    text-align: center;
+}
+.features .feat i {
+    color: var(--main);
+}
+.features .feat h3 {
+    font-weight: 800;
+    margin: 30px 0;
+}
+.features .feat p {
+    line-height: 1.8;
+    color: #777;
+    font-size: 17px;
+}
+/* End Features */
+
+/* Start Services */
+.services {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+}
+.service-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));  
+    grid-gap: 30px;
+    margin-top: 100px;
+}
+.srv {
+    display: flex;
+    margin-bottom: 40px;
+}
+@media (max-width: 767px){
+    .srv {
+        flex-direction: column; /* To make the context of srv vertical not horizontal */
+        text-align: center;
+    }
+}
+.srv i {
+    color: var(--main);
+    flex-basis: 60px; /* we used here flex-basis and not width so we control it by height and width to get a gd position */
+}
+.srv .text {
+    flex: 1; /* so it take his space without using 60px from (.srv i) */
+}
+.srv .text h3 {
+    margin: 0 0 20px;
+}
+.srv .text p {
+    color: #444;
+    font-weight: 300;
+    line-height: 1.6;
+}
+.service-content .image {
+    text-align: center;
+    position: relative;
+}
+.service-content .image::before {
+    content: "";
+    background-color: var(--secondary);
+    width: 100px;
+    height: calc(100% + 100px);
+    top: -50px;
+    position: absolute;
+    right: 0;
+    z-index: -1;
+}
+.service-content .image img {
+    width: 260px;
+}
+@media (max-width:1199px) {    /* we did that because the picture and the slide ::before that we created ruined in the medium size so hide it if the screen is less than 1199px */
+    .col .image {
+        display: none;
+    }
+}
+/* End Services */
+
+/* Start Portfolio */
+.portfolio{
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+    background-color: var(--section-background);
+}
+.portfolio .portfolio-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 30px;
+    margin-top: 80px;
+}
+.portfolio-content .card {
+    background-color: white;
+}
+.portfolio-content .card img {
+    width: 360px;
+    height: 200px;
+    padding: 0;
+    margin: 0;
+}
+.card .info {
+    padding: 20px;
+}
+.info h3 {
+    margin: 0; /*so i control my heading from padding whitout interference(intervention, involvement) of margin*/
+}
+.info p {
+    color: #777;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+/* End Portfolio */
+
+/* Start About*/
+.about {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding); /* for example if we wanna make the picture get more height from bottom we gonna write: padding-bottom: calc(var(--section-padding) + 60px); */
+}
+.about-content {
+    margin-top: 100px; /* to separate between content & heading */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+@media (max-width : 991px) {
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+.about-content .image {
+    position: relative;
+    width: 250px;
+    height: 300px;
+}
+@media (max-width:991px) {
+    .about-content .image {
+        margin: 0 auto 60px;
+    }
+}
+.about-content .image::before {
+content: "";
+position: absolute;
+background-color: var(--secondary);
+width: 100px;
+height: calc(100% + 80px);
+top: -40px;
+left: -20px;
+z-index: -1;
+}
+.about-content .image::after {
+top: -40px;
+content: "";
+position: absolute;
+width: 120px;
+height: 300px;
+width: 120px;
+border-left: 80px solid var(--main);
+border-bottom: 80px solid var(--main);
+z-index: -1;
+right: -150px;    
+}
+@media (max-width:991px) {
+    .about-content .image::before,.about-content .image::after {
+        display: none;
+    }
+}
+.about-content .image img {
+    /* (max-width:100%) so the picture doesn't go outside */
+    height: 300px;
+    width: 264px; /* so the picture doesn't go outside */
+}
+.about-content .text { /* there a lot of ways to put the text in the right beside the picture */
+    /* way number one :
+    flex : 1;
+    padding-left : 210px ; */
+    /* way number two */
+    flex-basis: calc(100% - 500px);
+}
+.about-content .text p:first-of-type{
+    font-weight: bold;
+    line-height: 2;
+    margin-bottom: 50px;
+}
+.about-content .text hr{
+    width: 50%;
+    display: inline-block; /* if we didn't do that he gonna be in the center */
+    border-color: var(--main);
+}
+.about-content .text p:last-of-type{
+    line-height: 2;
+    color: #777;
+}
+/* End About */
+
+/* Start Contact */
+.contact {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+    background-color: var(--section-background);
+}
+.contact .info {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+    text-align: center;
+    margin-bottom: -25px; /* i add this because i found there too space between h2,p $ info */
+}
+.info .label {
+    font-size: 35px;
+    font-weight: 800;
+    color: var(--secondary);
+    letter-spacing: -2px;
+    margin-bottom: 15px;
+}
+.info .link {
+    display: block;
+    font-size: 35px;
+    font-weight: 800;
+    color: var(--main);
+    text-decoration: none;
+}  
+.info .social {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 16px;
+}
+.info .social i {
+    margin-left: 10px;
+    color: var(--secondary);
+}
+@media (max-width:767px) {
+    .contact .info .label, .contact .info .link {
+        font-size: 25px;
+    }
+}
+/* End Contact */
+
+/* Start Footer */
+.footer {
+    background-color: var(--secondary);
+    color: white;
+    padding: 30px 10px;
+    text-align: center;
+    font-size: 18px;
+}
+.footer span {
+    font-weight: bold;
+    color: var(--main);
+}
+/* End Footer */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
